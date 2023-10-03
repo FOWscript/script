@@ -15,6 +15,21 @@ Main:AddButton({
 })
 
 Main:AddButton({
+    Name = "Bug fashion token",
+    Callback = function()
+     while task.wait() do
+    task.spawn(function()
+        for i = 1, 100 do
+            task.spawn(function()
+            game:GetService("ReplicatedStorage"):WaitForChild("FinishedSpinWheelFunc"):InvokeServer()
+            end)
+        end
+    end)
+end
+    end
+})
+
+Main:AddButton({
     Name = "Speak to Treasure Hunter",
     Callback = function()
        game:GetService("ReplicatedStorage"):WaitForChild("ProximityTriggeredFunc"):InvokeServer()
@@ -53,17 +68,4 @@ Main:AddSlider({
         tpdelay = Value
   end 
 
-TpTab:AddButton({
-	Name = "auto fashion token",
-	Callback = function()
-while task.wait() do
-    task.spawn(function()
-        for i = 1, 100 do
-            task.spawn(function()
-            game:GetService("ReplicatedStorage"):WaitForChild("FinishedSpinWheelFunc"):InvokeServer()
-            end)
-        end
-    end)
-end
 })
-
