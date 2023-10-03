@@ -1,2 +1,69 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "FOW | tên game", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Window = OrionLib:MakeWindow({Name = "FOW | shein x klarma", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+local Main = Window:MakeTab({
+    Name = "Main",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+Main:AddButton({
+    Name = "Teleport to Wheel",
+    Callback = function()
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-515, 40, -1081, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+    end
+})
+
+Main:AddButton({
+    Name = "Speak to Treasure Hunter",
+    Callback = function()
+       game:GetService("ReplicatedStorage"):WaitForChild("ProximityTriggeredFunc"):InvokeServer()
+    end
+})
+
+Main:AddButton({
+    Name = "Spin Wheel",
+    Callback = function()
+       game:GetService("ReplicatedStorage"):WaitForChild("SpinWheelFunc"):InvokeServer()
+    end
+})
+
+Main:AddToggle({
+    Name = "Auto Collect Treasure",
+    Default = false,
+    Callback = function(Value)
+        _G.AutoTP = Value
+        while task.wait(tpdelay) and _G.AutoTP do
+            for i,v in pairs(workspace.Temp.TreasureHuntItems:GetDescendants()) do
+                if v:FindFirstChild("TouchInterest") and game.Players.LocalPlayer.Character then
+                    game.Players.LocalPlayer.Character:PivotTo(v.CFrame)
+                end
+            end
+        end
+    end
+})
+
+Main:AddSlider({
+  Name = "TP Delay",
+  Min = 0.1,
+  Max = 1,
+  Default = 0.1,
+  Increment = 0.1,
+  Callback = function(Value)
+        tpdelay = Value
+  end 
+
+TpTab:AddButton({
+	Name = "auto fashion token",
+	Callback = function()
+while task.wait() do
+    task.spawn(function()
+        for i = 1, 100 do
+            task.spawn(function()
+            game:GetService("ReplicatedStorage"):WaitForChild("FinishedSpinWheelFunc"):InvokeServer()
+            end)
+        end
+    end)
+end
+})
+
