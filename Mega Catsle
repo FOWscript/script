@@ -10,6 +10,7 @@ local Main = Window:MakeTab({
 Main:AddToggle({
     Name = "Teleport to Wheel",
     Callback = function()
+while true do
        game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(426.872955, 183.98555, 1563.58655, 0.998957694, -0.000126864761, 0.0456451699, 0.00011722371, 0.99999994, 0.000213861465, -0.045645196, -0.000208258629, 0.998957694) 
 wait(1.5)
 game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(414.563873, 183.989914, 1564.14819, 0.996914685, -0.063856408, 0.0456451699, 0.0639132708, 0.997955382, 0.000213861465, -0.0455655009, 0.00270416006, 0.998957694) 
@@ -23,6 +24,7 @@ wait(1.5)
 game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(339.713593, 183.984695, 1567.56396, 0.998957694, -0.000126864761, 0.0456451699, 0.00011722371, 0.99999994, 0.000213861465, -0.045645196, -0.000208258629, 0.998957694)
 wait(1.5)
     end
+end
 })
 
 Main:AddButton({
