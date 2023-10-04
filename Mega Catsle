@@ -7,7 +7,14 @@ local Main = Window:MakeTab({
     PremiumOnly = false
 })
 
-Main:AddToggle({
+Main:AddButton({
+    Name = "load tora script",
+    Callback = function()
+	  loadstring(game:HttpGet('https://raw.githubusercontent.com/ToraIsMe/ToraIsMe/main/0MegaCastle'))()
+    end    
+})
+
+Main:AddButton({
     Name = "Teleport to Wheel",
     Callback = function()
 while true do
@@ -25,11 +32,4 @@ game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = C
 wait(1.5)
     end
 end
-})
-
-Main:AddButton({
-    Name = "load tora script",
-    Callback = function()
-	  loadstring(game:HttpGet('https://raw.githubusercontent.com/ToraIsMe/ToraIsMe/main/0MegaCastle'))()
-    end    
 })
