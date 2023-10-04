@@ -1,0 +1,310 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "FOW | shein x klarma", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+game:GetService("ProximityPromptService").PromptButtonHoldBegan:Connect(function(prompt)
+			prompt.HoldDuration = 0
+		end)
+ 
+local function autoPunch(enabled)
+  while enabled do
+    ReplicatedStorage.Events.DamageIncreaseOnClickEvent:FireServer()
+    wait() 
+  end
+end
+ 
+local function fireEggs(count, delay, arg)
+  local args = {
+    [1] = tostring(arg) 
+  }
+ 
+  local remote = ReplicatedStorage.Events.PlayerPressedKeyOnEgg
+ 
+  for i = 1, count do
+    remote:FireServer(unpack(args))
+    wait(delay) 
+  end
+ 
+end
+ 
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+ 
+-- Main window
+local Window = OrionLib:MakeWindow({
+  Name = "Punch Simulator",
+  HidePremium = false,
+  SaveConfig = true,
+  ConfigFolder = "PunchSimulator"
+})
+ 
+-- Tabs
+local MainTab = Window:MakeTab({
+  Name = "Main", 
+  Icon = "rbxassetid://4483345998"
+})
+ 
+local EggTab = Window:MakeTab({
+  Name = "Egg",
+  Icon = "rbxassetid://4483345998" 
+})
+ 
+local GeneralTab = Window:MakeTab({
+  Name = "General",
+  Icon = "rbxassetid://4483345998"
+})
+ 
+-- Elements
+MainTab:AddParagraph("made by", "pizza")
+ 
+-- Main
+local autoPunchEnabled = false
+ 
+MainTab:AddToggle({
+    Name = "skip fight",
+    Default = false,
+    Callback = function(Value)
+        _G.skipfight = Value
+        while _G.skipfight and task.wait() do
+			local args = {
+				[1] = true
+			}
+ 
+			game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PushEvent"):FireServer(unpack(args))
+		end
+    end
+})
+ 
+ 
+MainTab:AddToggle({
+  Name = "auto punch",
+  Default = false,
+  Callback = function(value) 
+    autoPunchEnabled = value
+    autoPunch(autoPunchEnabled)
+  end
+})
+ 
+MainTab:AddButton({
+    Name = "load tora script",
+    Callback = function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/ToraIsMe/ToraIsMe/main/0PUNCH'))()
+    end    
+})
+ 
+MainTab:AddButton({
+    Name = "load redblue script",
+    Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/PlayerHubOther/main/PlayerHubPunchingSimulator.lua", true))()
+    end    
+})
+ 
+ 
+ 
+EggTab:AddToggle({
+  Name = "Hide Animation",
+  Default = false,
+  Callback = function(Value)
+    autoHideAnimation = Value
+    while autoHideAnimation and task.wait() do
+      if workspace.Camera:FindFirstChild("EggOpenMap") then
+        workspace.Camera:FindFirstChild("EggOpenMap"):Destroy()
+      end
+    end
+  end  
+})
+ 
+EggTab:AddToggle({
+  Name = "Auto Hatch Gem Egg",
+  Default = false,
+  Callback = function(Value)
+    autoBreakGemEgg = Value
+    while autoBreakGemEgg and task.wait() do
+		local args = {
+			[1] = "VisitEgg"
+		}
+ 
+		game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PlayerPressedKeyOnEgg"):FireServer(unpack(args))
+    end
+  end
+})
+ 
+EggTab:AddToggle({
+  Name = "Auto Hatch Forest Egg",
+Default = false,
+  Callback = function(Value)
+    autoBreakEgg1 = Value
+    while autoBreakEgg1 and task.wait() do
+      local args = {
+        [1] = "1"  
+      }
+      game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PlayerPressedKeyOnEgg"):FireServer(unpack(args))
+    end
+  end
+})
+ 
+EggTab:AddToggle({
+  Name = "Auto Hatch Desert Egg",
+  Default = false,
+  Callback = function(Value)
+    autoBreakEgg2 = Value
+    while autoBreakEgg2 and task.wait() do
+      local args = {
+        [1] = "2"  
+      }
+      game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PlayerPressedKeyOnEgg"):FireServer(unpack(args))
+    end
+  end
+})
+ 
+EggTab:AddToggle({
+  Name = "Auto Hatch Cave Egg",
+  Default = false,
+  Callback = function(Value)
+    autoBreakEgg2 = Value
+    while autoBreakEgg2 and task.wait() do
+      local args = {
+        [1] = "3"  
+      }
+      game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PlayerPressedKeyOnEgg"):FireServer(unpack(args))
+    end
+  end
+})
+ 
+EggTab:AddToggle({
+  Name = "Auto Hatch Ocean Egg",
+  Default = false,
+  Callback = function(Value)
+    autoBreakEgg2 = Value
+    while autoBreakEgg2 and task.wait() do
+      local args = {
+        [1] = "4"  
+      }
+      game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PlayerPressedKeyOnEgg"):FireServer(unpack(args))
+    end
+  end
+})
+ 
+EggTab:AddToggle({
+  Name = "Auto Hatch Candy Egg",
+  Default = false,
+  Callback = function(Value)
+    autoBreakEgg2 = Value
+    while autoBreakEgg2 and task.wait() do
+      local args = {
+        [1] = "5"  
+      }
+      game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PlayerPressedKeyOnEgg"):FireServer(unpack(args))
+    end
+  end
+})
+ 
+EggTab:AddToggle({
+  Name = "Auto Hatch Snow Egg",
+  Default = false,
+  Callback = function(Value)
+    autoBreakEgg2 = Value
+    while autoBreakEgg2 and task.wait() do
+      local args = {
+        [1] = "6"  
+      }
+      game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PlayerPressedKeyOnEgg"):FireServer(unpack(args))
+    end
+  end
+})
+ 
+EggTab:AddToggle({
+  Name = "Auto Hatch Toy Egg",
+  Default = false,
+  Callback = function(Value)
+    autoBreakEgg2 = Value
+    while autoBreakEgg2 and task.wait() do
+      local args = {
+        [1] = "7"  
+      }
+      game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PlayerPressedKeyOnEgg"):FireServer(unpack(args))
+    end
+  end
+})
+ 
+EggTab:AddToggle({
+  Name = "Auto Hatch Farm Egg",
+  Default = false,
+  Callback = function(Value)
+    autoBreakEgg8 = Value
+    while autoBreakEgg8 and task.wait() do
+      local args = {
+        [1] = "8"  
+      }
+      game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PlayerPressedKeyOnEgg"):FireServer(unpack(args))
+    end
+  end
+})
+ 
+EggTab:AddToggle({
+  Name = "Auto Hatch Samurai Egg",
+  Default = false,
+  Callback = function(Value)
+    autoBreakEgg9 = Value
+while autoBreakEgg9 and task.wait() do
+      local args = {
+        [1] = "9"  
+      }
+      game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PlayerPressedKeyOnEgg"):FireServer(unpack(args))
+    end
+  end
+})
+ 
+EggTab:AddToggle({
+  Name = "Auto Hatch Space Egg",
+  Default = false,
+  Callback = function(Value)
+    autoBreakEgg10 = Value
+    while autoBreakEgg10 and task.wait() do
+      local args = {
+        [1] = "10"  
+      }
+      game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PlayerPressedKeyOnEgg"):FireServer(unpack(args))
+    end
+  end
+})
+ 
+EggTab:AddToggle({
+  Name = "Auto Hatch Magic Forest Egg",
+  Default = false,
+  Callback = function(Value)
+    autoBreakEgg11 = Value
+    while autoBreakEgg11 and task.wait() do
+      local args = {
+        [1] = "11"  
+      }
+      game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PlayerPressedKeyOnEgg"):FireServer(unpack(args))
+    end
+  end
+})
+ 
+GeneralTab:AddToggle({
+  Name = "Claim UGC",
+  Default = false,
+  Callback = function(Value)
+    autoClaimUGC = Value
+    while autoClaimUGC and task.wait(0.5) do
+	  local args = {
+	      [1] = "LegendaryHatchEvent"
+	  }
+ 
+	  game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("NewUGCEvents"):WaitForChild("ClickedEventClaimButton"):FireServer(unpack(args))
+    end
+  end  
+})
+ 
+ 
+GeneralTab:AddToggle({
+  Name = "Claim UGC 2",
+  Default = false,
+  Callback = function(Value)
+    autoClaimUGC2 = Value
+    while autoClaimUGC2 and task.wait(0.5) do
+	  game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("ClickedAxolotlEventClaimButton"):FireServer()
+ 
+    end
+  end  
+})
