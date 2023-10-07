@@ -10,8 +10,6 @@ local Main = Window:MakeTab({
 Main:AddButton({
     Name = "Bug coin ",
     Callback = function()
-    collect orbs in the paris hilton game and then run this
-
 while task.wait() do
 game:GetService("ReplicatedStorage").Remotes.UploadSlivEnergyEvent:FireServer()
 end
