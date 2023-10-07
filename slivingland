@@ -1,0 +1,20 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "FOW | Slinvingland 💪", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+local Main = Window:MakeTab({
+    Name = "Main",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+Main:AddButton({
+    Name = "Bug coin ",
+    Callback = function()
+    collect orbs in the paris hilton game and then run this
+
+while task.wait() do
+game:GetService("ReplicatedStorage").Remotes.UploadSlivEnergyEvent:FireServer()
+end
+end
+
+})
