@@ -1,5 +1,5 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "FOW | Slinvingland 💪", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Window = OrionLib:MakeWindow({Name = "FOW | Slivingland", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
 local Main = Window:MakeTab({
     Name = "Main",
@@ -10,9 +10,8 @@ local Main = Window:MakeTab({
 Main:AddButton({
     Name = "Bug coin ",
     Callback = function()
-while task.wait() do
+       while task.wait() do
 game:GetService("ReplicatedStorage").Remotes.UploadSlivEnergyEvent:FireServer()
 end
-end
-
 })
+
