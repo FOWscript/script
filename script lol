@@ -1,0 +1,12 @@
+local players = game:GetService("Players")
+local plr = game.Players.LocalPlayer
+
+local itemtobuy = "item"
+
+if players:FindFirstChild(plr.Name) then
+   if itemtobuy ~= nil or itemtobuy ~= "" then
+      plr:Kick('Bought: '..tostring(itemtobuy)..'!')
+   else
+      plr:Kick('You need to have an item to buy!')
+   end
+end
