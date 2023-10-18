@@ -183,16 +183,16 @@ end
 })
 
 PlayerTab:AddSlider({
-    Name = "Walkspeed",
-    Min = 16,
-    Max = 500,
-    Default = 16,
-    Color = Color3.fromRGB(255,255,255),
-    Increment = 1,
-    ValueName = "WS",
-    Callback = function(Value)
-        game.Players.LocalPlayer.Character.Humanoid.Walspped = Value
-    end
+	Name = "WalkSpeed",
+	Min = 16,
+	Max = 500,
+	Default = 16,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "WS",
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+	end  
 })
 
 PlayerTab:AddSlider({
