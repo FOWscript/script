@@ -143,7 +143,7 @@ end
 })
 
 OthersTab:AddButton({
-    Name = "Check adions",
+    Name = "hilde players",
 	Callback = function()
     _G.HideAll = true
 while _G.HideAll and  task.wait() do
