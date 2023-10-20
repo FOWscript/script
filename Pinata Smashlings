@@ -11,9 +11,6 @@ function autoegg()
     end
     end
 
-MainTab:AddLabel("Source : Keighta")
-MainTab:AddLabel("Rejoin when you have enough tickets")
-
 -- Main tab
 local MainTab = Window:MakeTab({
 	Name = "Main",
@@ -33,7 +30,16 @@ local OthersTab = Window:MakeTab({
 	PremiumOnly = false
 })
 -- idk
-MainTab:AddLabel("rejoin")
+MainTab:AddLabel("Rejoin when u get enoungh tickets")
+
+MainTab:AddButton({
+	Name = "Travel to Wheel",
+	Callback = function()
+      		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(134.5, 98.3190765, 1478.375, 0, -1, 0, 1, 0, -0, 0, 0, 1)
+wait(3)
+workspace.TeleportPads.CEC.PlaceTeleportPad_CEC.TeleportZone.PlaceTeleportZone.RF.RequestTeleport:InvokeServer()
+  	end    
+})
 
 
 MainTab:AddToggle({
@@ -46,7 +52,7 @@ MainTab:AddToggle({
 })
 
 MainTab:AddButton({
-	Name = "Auto Farm",
+	Name = "Auto Farm Ticket",
 	Callback = function()
       		getgenv().autoFarmTicket = true
 getgenv().autoCollect = true
