@@ -1,21 +1,54 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = Fow | Pinata Smashling , HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Window = OrionLib:MakeWindow({Name = "FOW | Pinata Smashlings", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
-G.farm = true
+-- Values
+_G.egg = true
 
+-- Fuctions
+function autoegg()
+    while _G.egg == true do
+        workspace:WaitForChild("CEC_Integration"):WaitForChild("PrizeWheel"):WaitForChild("RewardWheel"):WaitForChild("RF"):WaitForChild("Spin"):InvokeServer()
+    end
+    end
+
+MainTab:AddLabel("Source : Keighta")
+MainTab:AddLabel("Rejoin when you have enough tickets")
+
+-- Main tab
 local MainTab = Window:MakeTab({
 	Name = "Main",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
+local PlayerTab = Window:MakeTab({
+	Name = "Players",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local OthersTab = Window:MakeTab({
+	Name = "Others",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+-- idk
+MainTab:AddLabel("rejoin")
+
+
 MainTab:AddToggle({
-	Name = "Auto Farm",
+	Name = "Auto Spin",
 	Default = false,
 	Callback = function(Value)
-		G.farm = value
-		while G.farm = true and task.wait() do
-		getgenv().autoFarmTicket = true
+		_G.egg = Value
+        autoegg()
+	end    
+})
+
+MainTab:AddButton({
+	Name = "Auto Farm",
+	Callback = function()
+      		getgenv().autoFarmTicket = true
 getgenv().autoCollect = true
 
 local lp = game:GetService("Players").LocalPlayer
@@ -50,21 +83,7 @@ spawn(function()
         wait(.5)
     end
 end)
---tp to event world or simply reset and walk straight
---workspace.TeleportPads.CEC.PlaceTeleportPad_CEC.TeleportZone.PlaceTeleportZone.RF.RequestTeleport:InvokeServer()
-	end    
-})
-
-local PlayerTab = Window:MakeTab({
-	Name = "Players",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
-local OthersTab = Window:MakeTab({
-	Name = "Others",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
+  	end    
 })
 
 OthersTab:AddButton({
@@ -283,4 +302,3 @@ PlayerTab:AddSlider({
         game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
     end
 })
-
