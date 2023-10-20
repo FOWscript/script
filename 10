@@ -10,7 +10,7 @@ local MainTab = Window:MakeTab({
 })
 
 MainTab:AddToggle({
-	Name = "Auto Far,",
+	Name = "Auto Farm",
 	Default = false,
 	Callback = function(Value)
 		G.farm = value
