@@ -1,35 +1,15 @@
-    local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-    local Window = OrionLib:MakeWindow({Name = "FOW | Sportify", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
-    -- Main tab
-    local MainTab = Window:MakeTab({
-        Name = "Main",
-        Icon = "rbxassetid://4483345998",
-        PremiumOnly = false
-    })
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
 
-    local PlayerTab = Window:MakeTab({
-        Name = "Players",
-        Icon = "rbxassetid://4483345998",
-        PremiumOnly = false
-    })
+local w = library:CreateWindow("Sportify") -- Creates the window
 
-    local OthersTab = Window:MakeTab({
-        Name = "Others",
-        Icon = "rbxassetid://4483345998",
-        PremiumOnly = false
-    })
-    -- idk
+local b = w:CreateFolder("Farm") -- Creates the folder(U will put here your buttons,etc)
+--tab b 
+b:Button("Button",function()
+    local tp = game.Players.LocalPlayer.Character.HumanoidRootPart
+for i, v in pairs(game.workspace.HolidayPickups:GetDescendants()) do
+if v.Name == "HolidayCoinTemplate" then
+    tp.CFrame = v.CFrame wait(1)
+end
+end
 
-    MainTab:AddButoon({
-        Name = "Farm",
-        Default = false,
-        Callback = function()
-            local tp = game.Players.LocalPlayer.Character.HumanoidRootPart
-    for i, v in pairs(game.workspace.HolidayPickups:GetDescendants()) do
-    if v.Name == "HolidayCoinTemplate" then
-        tp.CFrame = v.CFrame wait(1)
-    end
-    end
-        end
-        end
-    })
+end)
