@@ -1,9 +1,20 @@
-local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
-local w = library:CreateWindow("Sportify") -- Creates the window
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "FOW | Sportify", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
-local b = w:CreateFolder("Farm") -- Creates the folder(U will put here your buttons,etc)
---tab b 
-b:Button("Button",function()
-    print(bacon ngu vl)
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
 
-end)
+Tab:AddButton({
+	Name = "Farm candies",
+	Callback = function()
+        local tp = game.Players.LocalPlayer.Character.HumanoidRootPart
+        for i, v in pairs(game.workspace.HolidayPickups:GetDescendants()) do
+        if v.Name == "HolidayCoinTemplate" then
+            tp.CFrame = v.CFrame wait(1)
+        end
+        end
+  	end    
+})
