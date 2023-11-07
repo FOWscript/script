@@ -7,6 +7,18 @@ local Tab = Window:MakeTab({
 	PremiumOnly = false
 })
 
+local PlayerTab = Window:MakeTab({
+	Name = "Players",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local OthersTab = Window:MakeTab({
+	Name = "Others",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
 Tab:AddButton({
 	Name = "Farm candies",
 	Callback = function()
@@ -17,4 +29,222 @@ Tab:AddButton({
         end
         end
   	end    
+})
+
+
+OthersTab:AddButton({
+	Name = "script inf yeild",
+	Callback = function()
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end
+})
+
+OthersTab:AddButton({
+	Name = "Join less people sever",
+	Callback = function()
+      		local Http = game:GetService("HttpService")
+local TPS = game:GetService("TeleportService")
+local Api = "https://games.roblox.com/v1/games/"
+
+local _place = game.PlaceId
+local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100"
+function ListServers(cursor)
+   local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
+   return Http:JSONDecode(Raw)
+end
+
+local Server, Next; repeat
+   local Servers = ListServers(Next)
+   Server = Servers.data[1]
+   Next = Servers.nextPageCursor
+until Server
+
+TPS:TeleportToPlaceInstance(_place,Server.id,game.Players.LocalPlayer)
+  	end    
+})
+
+OthersTab:AddButton({
+	Name = "sever hope",
+	Callback = function()
+      		local Player = game.Players.LocalPlayer    
+local Http = game:GetService("HttpService")
+local TPS = game:GetService("TeleportService")
+local Api = "https://games.roblox.com/v1/games/"
+
+local _place,_id = game.PlaceId, game.JobId
+local _servers = Api.._place.."/servers/Public?sortOrder=Desc&limit=100"
+function ListServers(cursor)
+   local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
+   return Http:JSONDecode(Raw)
+end
+
+local Next; repeat
+   local Servers = ListServers(Next)
+   for i,v in next, Servers.data do
+       if v.playing < v.maxPlayers and v.id ~= _id then
+           local s,r = pcall(TPS.TeleportToPlaceInstance,TPS,_place,v.id,Player)
+           if s then break end
+       end
+   end
+   
+   Next = Servers.nextPageCursor
+until not Next
+  	end    
+})
+
+OthersTab:AddButton({
+	Name = "Anti lag",
+	Callback = function()
+local ToDisable = {
+ Textures = true,
+ VisualEffects = true,
+ Parts = true,
+ Particles = true,
+ Sky = true
+}
+
+local ToEnable = {
+ FullBright = false
+}
+
+local Stuff = {}
+
+for _, v in next, game:GetDescendants() do
+ if ToDisable.Parts then
+  if v:IsA("Part") or v:IsA("Union") or v:IsA("BasePart") then
+   v.Material = Enum.Material.SmoothPlastic
+   table.insert(Stuff, 1, v)
+  end
+ end
+ 
+ if ToDisable.Particles then
+  if v:IsA("ParticleEmitter") or v:IsA("Smoke") or v:IsA("Explosion") or v:IsA("Sparkles") or v:IsA("Fire") then
+   v.Enabled = false
+   table.insert(Stuff, 1, v)
+  end
+ end
+ 
+ if ToDisable.VisualEffects then
+  if v:IsA("BloomEffect") or v:IsA("BlurEffect") or v:IsA("DepthOfFieldEffect") or v:IsA("SunRaysEffect") then
+   v.Enabled = false
+   table.insert(Stuff, 1, v)
+  end
+ end
+ 
+ if ToDisable.Textures then
+  if v:IsA("Decal") or v:IsA("Texture") then
+   v.Texture = ""
+   table.insert(Stuff, 1, v)
+  end
+ end
+ 
+ if ToDisable.Sky then
+  if v:IsA("Sky") then
+   v.Parent = nil
+   table.insert(Stuff, 1, v)
+  end
+ end
+end
+
+game:GetService("TestService"):Message("Effects Disabler Script : Successfully disabled "..#Stuff.." assets / effects. Settings :")
+
+for i, v in next, ToDisable do
+ print(tostring(i)..": "..tostring(v))
+end
+
+if ToEnable.FullBright then
+    local Lighting = game:GetService("Lighting")
+    
+    Lighting.FogColor = Color3.fromRGB(255, 255, 255)
+    Lighting.FogEnd = math.huge
+    Lighting.FogStart = math.huge
+    Lighting.Ambient = Color3.fromRGB(255, 255, 255)
+    Lighting.Brightness = 5
+    Lighting.ColorShift_Bottom = Color3.fromRGB(255, 255, 255)
+    Lighting.ColorShift_Top = Color3.fromRGB(255, 255, 255)
+    Lighting.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
+    Lighting.Outlines = true
+end 
+end
+})
+
+OthersTab:AddButton({
+    Name = "hilde players",
+	Callback = function()
+    _G.HideAll = true
+while _G.HideAll and  task.wait() do
+
+for i,v in pairs(game.Players:GetPlayers()) do
+if v.Name ~= game.Players.LocalPlayer.Name and v.Character then
+v.Character:Destroy()
+end
+end
+end
+end
+})
+
+PlayerTab:AddButton({
+	Name = "Check adions",
+	Callback = function()
+      	local function tintScreenRedWithTransparency()
+    local ScreenGui = Instance.new("ScreenGui")
+    local Frame = Instance.new("Frame")
+
+    ScreenGui.Name = "RedTint"
+    Frame.Size = UDim2.new(1, 0, 1, 0)
+    Frame.BackgroundColor3 = Color3.new(1, 0, 0) -- Red color
+    Frame.BackgroundTransparency = 0.5
+    Frame.BorderSizePixel = 0
+
+    Frame.Parent = ScreenGui
+    ScreenGui.Parent = game.Players.LocalPlayer.PlayerGui
+end
+
+for _, v in pairs(game:GetDescendants()) do
+    if (string.find(v.Name, "ADONIS")) or (v:IsA("ImageButton") and v.Image.Name == "rbxassetid://357249130") then
+        print("ADONIS")
+        tintScreenRedWithTransparency()
+    end
+end
+
+for x, d in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
+    if d:IsA("RemoteEvent") and d:FindFirstChild("__FUNCTION") then
+        print("ADONIS")
+        tintScreenRedWithTransparency()
+    end
+end
+  	end    
+})
+
+PlayerTab:AddButton({
+	Name = "Reblue v1",
+	Callback = function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/JustAP1ayer/PlayerHubOther/main/PlayerHubIngameUgcLimiteds.lua')))()
+end
+})
+
+PlayerTab:AddSlider({
+	Name = "WalkSpeed",
+	Min = 16,
+	Max = 500,
+	Default = 16,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "WS",
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+	end  
+})
+
+PlayerTab:AddSlider({
+    Name = "InfJump",
+    Min = 16,
+    Max = 500,
+    Default = 16,
+    Color = Color3.fromRGB(255,255,255),
+    Increment = 1,
+    ValueName = "IP",
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+    end
 })
