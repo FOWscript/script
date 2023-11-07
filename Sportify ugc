@@ -5,11 +5,6 @@ local w = library:CreateWindow("Sportify") -- Creates the window
 local b = w:CreateFolder("Farm") -- Creates the folder(U will put here your buttons,etc)
 --tab b 
 b:Button("Button",function()
-    local tp = game.Players.LocalPlayer.Character.HumanoidRootPart
-for i, v in pairs(game.workspace.HolidayPickups:GetDescendants()) do
-if v.Name == "HolidayCoinTemplate" then
-    tp.CFrame = v.CFrame wait(1)
-end
-end
+    print(bacon ngu vl)
 
 end)
