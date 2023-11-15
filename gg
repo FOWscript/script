@@ -1,20 +1,21 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "FOW | Mega catsle", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Window = OrionLib:MakeWindow({Name = "J đó k bt", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
-local Main = Window:MakeTab({
-    Name = "Main",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
+local Tab = Window:MakeTab({
+	Name = "Tab 1",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
 })
 
-Main:AddButton({
-    Name = "load tora script",
-    Callback = function()
-	  local tp = game.Players.LocalPlayer.Character.HumanoidRootPart
+Tab:AddButton({
+	Name = "Button!",
+	Callback = function()
+      		local tp = game.Players.LocalPlayer.Character.HumanoidRootPart
 for i, v in pairs(game.workspace::GetChildren()) do
 if v.Name == "Meshes/axion_Text" and v.Parent then
 tp.CFrame = v.CFrame wait()
 end
 end
-    end    
+  	end    
 })
+
