@@ -10,11 +10,38 @@ local Tab = Window:MakeTab({
 Tab:AddButton({
 	Name = "Button!",
 	Callback = function()
-      		local tp = game.Players.LocalPlayer.Character.HumanoidRootPart
-for i, v in pairs(game.workspace::GetChildren()) do
-if v.Name == "Meshes/axion_Text" and v.Parent then
-tp.CFrame = v.CFrame wait()
+      		-- Define a function to teleport the user to the next UGC Crate
+local function teleportToNextCrate()
+    local targetCrateName = "Skull"
+    local crates = workspace:GetDescendants()
+    local user = game.Players.LocalPlayer
+
+    -- Find the nearest UGC Crate
+    local nearestCrate, minDistance = nil, math.huge
+    for _, crate in ipairs(crates) do
+        if crate.Name == targetCrateName then
+            local distance = (crate.Position - user.Character.HumanoidRootPart.Position).magnitude
+            if distance < minDistance then
+                nearestCrate = crate
+                minDistance = distance
+            end
+        end
+    end
+
+    -- Teleport the user to the nearest crate
+    if nearestCrate then
+        user.Character.HumanoidRootPart.CFrame = CFrame.new(nearestCrate.Position)
+    end
 end
+
+-- Create a loop to continuously find and teleport to UGC Crates
+while true do
+    if game.Players.LocalPlayer.Character.Humanoid.Health > 0 then 
+        for i, skulls in pairs(crates) do 
+            if skulls.Name == "ProximityPrompt" then
+    teleportToNextCrate()
+    wait(1)
+      fireproximitypromt(skulls)
 end
   	end    
 })
