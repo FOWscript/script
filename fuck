@@ -45,7 +45,7 @@ local function teleportToNextCrate()
 
     -- Find the nearest UGC Crate
     local nearestCrate, minDistance = nil, math.huge
-    for _, crate in ipairs(crates) do
+    for _, crate in pairs(crates) do
         if crate.Name == targetCrateName then
             local distance = (crate.Position - user.Character.HumanoidRootPart.Position).magnitude
             if distance < minDistance then
