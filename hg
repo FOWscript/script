@@ -1,0 +1,861 @@
+wqeqeiqweqeqiqoeqop = Instance.new("BindableFunction")
+function wqeqeiqweqeqiqoeqop.OnInvoke(response)
+if response == "Execute" then
+    loadstring(game:HttpGet(("https://raw.githubusercontent.com/JustAP1ayer/PlayerHubOther/main/PlayerHubIngameUgcLimitedsV2.lua"),true))()
+end
+end
+
+game:GetService("StarterGui"):SetCore("SendNotification", {
+		Title = "NOTICE!";
+        Duration = 18; 
+	    Button1 = "Execute";
+        	Callback = wqeqeiqweqeqiqoeqop,
+
+		Text = "A New version of the script Has released!"
+
+	})
+task.wait(0.0777)
+local library = loadstring(game:HttpGet(
+    ('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wall%20v3')))()
+local w = library:CreateWindow("PlayerHub UGC") -- Creates the window
+local zz = w:CreateFolder("discord.gg/ugcleaks") -- Creates the folder(U will put here your buttons,etc)
+zz:Button("Support me (Copy Clipboard)", function()
+    setclipboard("Robux Donation = https://www.roblox.com/catalog/11733073941\nCashapp Donation = $JustAPlayer")
+    end)
+zz:Button("Check if Adonis (Console)", function()
+    spawn(function()
+    for _, v in pairs(game:GetDescendants()) do
+        if (string.find(v.Name, "ADONIS")) or (v:IsA("ImageButton") and v.Image.Name == "rbxassetid://357249130") then
+            print("May Have ADONIS")
+        end
+    end
+end)
+
+end)
+task.wait(0.05)
+zz:Label("https://discord.gg/nXERxPYUyZ", {
+    TextSize = 14, -- Self Explaining
+    TextColor = Color3.fromRGB(255, 255, 255), -- Self Explaining
+    BgColor = Color3.fromRGB(69, 69, 69) -- Self Explaining
+
+})
+local chosenfire = "Touch Interest"
+zz:Dropdown("What to fire", {"Touch Interest", "Proximity Prompt", "Click Detector"}, true, function(Value)
+    chosenfire = Value
+end)
+zz:Button("Fire Chosen Class Above", function()
+    spawn(function()
+    for _, descendant in ipairs(workspace:GetDescendants()) do
+        if chosenfire == "Proximity Prompt" and descendant:IsA("ProximityPrompt") then
+            fireproximityprompt(descendant)
+        end
+        if chosenfire == "Touch Interest" and descendant:IsA("TouchTransmitter") and
+            game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character.PrimaryPart then
+            task.spawn(function()
+                firetouchinterest(descendant:FindFirstAncestorWhichIsA("Part"),
+                    game.Players.LocalPlayer.Character.PrimaryPart, 1)
+                task.wait()
+                firetouchinterest(descendant:FindFirstAncestorWhichIsA("Part"),
+                    game.Players.LocalPlayer.Character.PrimaryPart, 0)
+            end)
+        end
+        if chosenfire == "Click Detector" and descendant:IsA("ClickDetector") then
+            task.spawn(function()
+                fireclickdetector(descendant)
+            end)
+        end
+    end
+end)
+end)
+
+zz:Button("Script Finder", function()
+    spawn(function()
+    local Iris =
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/x0581/Iris-Exploit-Bundle/main/bundle.lua"))().Init(
+            game.CoreGui)
+
+    local result = {
+        result = {
+            scripts = {}
+        }
+    }
+    local function search(query)
+        query = query:gsub(" ", "+")
+        result = game:GetService("HttpService"):JSONDecode(game:HttpGet(
+            ("https://\115\99\114\105\112\116\98\108\111\120.com/api/script/search?q=%s&max=500&mode=free"):format(query)))
+    end
+
+    local viewdetails = false
+    local script = {}
+
+    Iris:Connect(function()
+        Iris.Window({"Script Browser - Powered By \83\99\114\105\112\116\66\108\111\120.com!"})
+        do
+            Iris.SameLine()
+            do
+                local query = Iris.InputText({""}).text.value
+                if Iris.Button({"Search"}).clicked then
+                    task.spawn(function()
+                        search(query)
+                        Iris.ForceRefresh()
+                    end)
+                end
+                if Iris.Button({"Clear"}).clicked then
+                    result = {
+                        result = {
+                            scripts = {}
+                        }
+                    }
+                    Iris.ForceRefresh()
+                end
+                Iris.End()
+            end
+            Iris.Table({3})
+            do
+                Iris.Text({"Title"})
+                Iris.NextColumn()
+                Iris.Text({"Game"})
+                Iris.NextColumn()
+                Iris.Text({"Options"})
+                Iris.NextColumn()
+                for i, v in next, result.result.scripts do
+                    Iris.Text({v.title})
+                    Iris.NextColumn()
+                    Iris.Text({v.game.name})
+                    Iris.NextColumn()
+                    Iris.SameLine()
+                    do
+                        Iris.Text({""})
+                        if Iris.SmallButton({"Execute"}).clicked then
+                            task.spawn(function()
+                                loadstring(v.script)()
+                            end)
+                        end
+                        if Iris.SmallButton({"View Details"}).clicked then
+                            script = v
+                            viewdetails = true
+                        end
+                        Iris.End()
+                    end
+                    Iris.NextColumn()
+                end
+                Iris.End()
+            end
+            Iris.End()
+        end
+
+        if viewdetails then
+            Iris.Window({
+                "View Details",
+                [Iris.Args.Window.NoClose] = false
+            })
+            do
+                if Iris.Button({"Close"}).clicked then
+                    viewdetails = false
+                end
+                Iris.Table({2})
+                do
+                    for i, v in next, script do
+                        if typeof(v) ~= "table" then
+                            Iris.Text({tostring(i)})
+                            Iris.NextColumn()
+                            Iris.Text({tostring(v)})
+                            Iris.NextColumn()
+                        end
+                    end
+                    Iris.End()
+                end
+                Iris.End()
+            end
+        end
+    end)
+end)
+end)
+zz:Button("Infinite Yield", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+end)
+zz:Button("My Universal Script", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/JustAP1ayer/PlayerHubOther/main/PlayerHubUniversal.lua",
+        true))()
+end)
+zz:Button("FLY GUI (mobile)", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
+end)
+if game.PlaceId == 975820487 then
+    zz:Button("Testing IG?  shh ignore", function()
+        game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui3:Destroy()
+    end)
+    zz:Button("Camp's Game fast Priority Sniper", function()
+        local Cooldown;
+        Cooldown = hookfunction(wait, function(v)
+
+            v = 0;
+
+            return Cooldown(v);
+        end);
+    end)
+end
+
+task.wait(0.1)
+local w2 = library:CreateWindow("PlayerHub Sniper") -- Creates the window
+local t = w2:CreateFolder("redblue.") -- Creates the folder(U will put here your buttons,etc)
+t:Toggle("Anti Prompt Loading Delay (Visual Prob)", function(bool1)
+    _G.antidelay = bool1
+    spawn(function()
+
+        while task.wait(0) and _G.antidelay do
+            if game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator:FindFirstChild("Prompt") and
+                game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt:FindFirstChild("AlertContents") and
+                game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents:FindFirstChild(
+                    "Footer") and
+                game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents.Footer:FindFirstChild(
+                    "Buttons") and
+                game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents.Footer.Buttons:FindFirstChild(
+                    "2") and
+                game:GetService("CoreGui").PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents.Footer
+                    .Buttons["2"]:FindFirstChild("LoadingImage") then
+                game:GetService("CoreGui").PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents.Footer
+                    .Buttons["2"].LoadingImage:Destroy()
+            end
+        end
+    end)
+end)
+local webhookcolour = 0x21ff29
+
+local embedTitle = "||" .. game.Players.LocalPlayer.Name .. " (" .. game.Players.LocalPlayer.UserId ..
+")|| has bought A" .. " new Bundle has been Bought! " 
+local limitedugcwebhook 
+t:Box("Input Webhook", "string", function(value) -- "number" or "string"
+    limitedugcwebhook = value
+end)
+getgenv().LimmyBought = false
+t:Toggle("Limited Bought Webhook", function(bool1)
+    getgenv().LimmyBought = bool
+end)
+game:GetService("MarketplaceService").PromptPurchaseFinished:Connect(
+        function(player, assetId, wasPurchased)
+            if wasPurchased and limitedugcwebhook ~= nil then
+                if getgenv().LimmyBought == true then
+
+                    local success, response = pcall(function()
+                        requested = (syn and syn.request) or (fluxus and fluxus.request) or request or
+                                        (http and http.request) or http_request
+                        requested({
+                            Url = tostring(limitedugcwebhook),
+                            Method = "POST",
+                            Headers = {
+                                ["Content-Type"] = "application/json"
+                            },
+                            Body = game:GetService("HttpService"):JSONEncode({
+                                content = "",
+                                embeds = {{
+                                    title = embedTitle .. os.date(" %I:%M:%S %p"),
+                                    description = "**The Asset bought is**\n" .. "**Id / Name:** [" .. tostring(assetId) ..
+                                        "](https://www.roblox.com/catalog/" .. tostring(assetId) ..
+                                        "/PlayerHubOnTop) / " ..
+                                        game:GetService("MarketplaceService"):GetProductInfo(assetId).Name ..
+                                        "\n **Description:** " ..
+                                        game:GetService("MarketplaceService"):GetProductInfo(assetId).Description ..
+                                        "\n **Created by:** " ..
+                                        game:GetService("MarketplaceService"):GetProductInfo(assetId).Creator.Name,
+                                    color = webhookcolour
+                                }}
+                            })
+                        })
+                    end)
+                    if not success then
+                        requested = (syn and syn.request) or (fluxus and fluxus.request) or request or
+                                        (http and http.request) or http_request
+                        requested({
+                            Url = tostring(limitedugcwebhook),
+                            Method = "POST",
+                            Headers = {
+                                ["Content-Type"] = "application/json"
+                            },
+                            Body = game:GetService("HttpService"):JSONEncode({
+                                content = "",
+                                embeds = {{
+                                    title = embedTitle .. os.date(" %I:%M:%S %p"),
+                                    description = "Bought (ID) " .. tostring(assetId),
+                                    color = webhookcolour
+                                }}
+                            })
+                        })
+                    end
+                end
+            end
+        end)
+local t = w2:CreateFolder("Clicking") -- Creates the folder(U will put here your buttons,etc)
+
+task.wait(0.1)
+t:Label("55X and 65.5Y is Default Offsets", {
+    TextSize = 13, -- Self Explaining
+    TextColor = Color3.fromRGB(255, 255, 255), -- Self Explaining
+    BgColor = Color3.fromRGB(69, 69, 69) -- Self Explaining
+
+})
+local autoclicklim = 0
+t:Slider("AutoClick Speed (Default 0)", {
+    min = 0, -- min value of the slider
+    max = 5, -- max value of the slider
+    precise = true -- max 2 decimals
+}, function(value)
+    autoclicklim = value
+end)
+
+local limoffsetX = 55
+t:Slider("AutoClick Offset X", {
+    min = -200, -- min value of the slider
+    max = 200, -- max value of the slider
+    precise = true -- max 2 decimals
+}, function(value)
+    limoffsetX = value
+end)
+local limoffsetY = 65.5
+t:Slider("AutoClick Offset Y", {
+    min = -200, -- min value of the slider
+    max = 200, -- max value of the slider
+    precise = true -- max 2 decimals
+}, function(value)
+    limoffsetY = value
+end)
+local MaxPrice = 1
+t:Slider("Max Price (1 Default)", {
+    min = 0, -- min value of the slider
+    max = 10000, -- max value of the slider
+    precise = false -- max 2 decimals
+}, function(value)
+    MaxPrice = value
+end)
+
+t:Toggle("Auto Clicker Buy Limited", function(bool1)
+    _G.limsniperautoclicker = bool1
+    spawn(function()
+
+        while task.wait(autoclicklim) and _G.limsniperautoclicker do
+            if game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator:FindFirstChild("Prompt") and
+                game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt:FindFirstChild("AlertContents") and
+                game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents:FindFirstChild(
+                    "Footer") and
+                game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents.Footer:FindFirstChild(
+                    "Buttons") and
+                game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents.Footer.Buttons:FindFirstChild(
+                    "2") and
+                game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents.Footer.Buttons[2]:FindFirstChild(
+                    "ButtonContent").ButtonMiddleContent and
+                game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents.Footer.Buttons[2]:FindFirstChild(
+                    "ButtonContent").ButtonMiddleContent:FindFirstChildOfClass("TextLabel") and tonumber(
+                game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents.Footer.Buttons[2]:FindFirstChild(
+                    "ButtonContent").ButtonMiddleContent:FindFirstChildOfClass("TextLabel").Text) <= tonumber(MaxPrice) then
+
+
+                        local yes = game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents
+                                        .Footer.Buttons[2].AbsolutePosition
+                        game:GetService("VirtualInputManager"):SendMouseButtonEvent(yes.X + tonumber(limoffsetX),
+                            yes.Y + tonumber(limoffsetY), 0, true, game, 1)
+                        task.wait()
+                        game:GetService("VirtualInputManager"):SendMouseButtonEvent(yes.X + tonumber(limoffsetX),
+                            yes.Y + tonumber(limoffsetY), 0, false, game, 1)
+
+            end
+        end
+    end)
+end)
+t:Toggle("Auto Clicker Buy (0 ONLY)", function(bool2)
+    _G.limsniperautoclicker2 = bool2
+    spawn(function()
+        while task.wait(autoclicklim) and _G.limsniperautoclicker2 do
+            if game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator:FindFirstChild("Prompt") and
+                game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt:FindFirstChild("AlertContents") and
+                game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents:FindFirstChild(
+                    "Footer") and
+                game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents.Footer:FindFirstChild(
+                    "Buttons") and
+                game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents.Footer.Buttons:FindFirstChild(
+                    "2") and
+                game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents.Footer.Buttons[2]:FindFirstChild(
+                    "ButtonContent").ButtonMiddleContent and
+                game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents.Footer.Buttons[2]:FindFirstChild(
+                    "ButtonContent").ButtonMiddleContent:FindFirstChildOfClass("TextLabel") and tonumber(
+                game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents.Footer.Buttons[2]:FindFirstChild(
+                    "ButtonContent").ButtonMiddleContent:FindFirstChildOfClass("TextLabel").Text) <= tonumber(0) then
+
+                        local yes = game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents
+                                        .Footer.Buttons[2].AbsolutePosition
+                        game:GetService("VirtualInputManager"):SendMouseButtonEvent(yes.X + tonumber(limoffsetX),
+                            yes.Y + tonumber(limoffsetY), 0, true, game, 1)
+                        task.wait()
+                        game:GetService("VirtualInputManager"):SendMouseButtonEvent(yes.X + tonumber(limoffsetX),
+                            yes.Y + tonumber(limoffsetY), 0, false, game, 1)
+
+            end
+        end
+    end)
+end)
+t:Toggle("Auto Close Error Clicker", function(bool2)
+    _G.limsniperautoclicker33 = bool2
+    spawn(function()
+        while task.wait(autoclicklim) and _G.limsniperautoclicker33 do
+            if game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator:FindFirstChild("Prompt") and
+                game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt:FindFirstChild("AlertContents") and
+                game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents:FindFirstChild(
+                    "Footer") and
+                game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents.Footer:FindFirstChild(
+                    "Buttons") and
+                not game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents.Footer.Buttons:FindFirstChild(
+                    "2") then
+                if game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents.Footer.Buttons:FindFirstChild(
+                    "1") then
+
+                            local yes = game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt
+                                            .AlertContents.Footer.Buttons[1].AbsolutePosition
+                            game:GetService("VirtualInputManager"):SendMouseButtonEvent(yes.X + tonumber(limoffsetX),
+                                yes.Y + tonumber(limoffsetY), 0, true, game, 1)
+                            task.wait()
+                            game:GetService("VirtualInputManager"):SendMouseButtonEvent(yes.X + tonumber(limoffsetX),
+                                yes.Y + tonumber(limoffsetY), 0, false, game, 1)
+
+                end
+            end
+        end
+    end)
+end)
+local b = w2:CreateFolder("Serial Sniper") -- Creates the folder(U will put here your buttons,etc)
+
+local serialyouwant = 69
+b:Box("Serial you Want", "number", function(value) -- "number" or "string"
+    serialyouwant = value
+end)
+
+local productidserialsniper = 123456789
+
+b:Box("Product Id to Serial Snipe", "number", function(value) -- "number" or "string"
+    productidserialsniper = value
+end)
+
+local intervalserialsnper = 0
+b:Slider("Loop interval Serial Sniper", {
+    min = 0, -- min value of the slider
+    max = 10, -- max value of the slider
+    precise = true -- max 2 decimals
+}, function(value)
+    intervalserialsnper = value
+end)
+local originalstockserial = 69
+b:Box("Product's Total / Original Copies", "number", function(value) -- "number" or "string"
+    originalstockserial = value
+end)
+b:Button("Get Total stock ^", function()
+    if request then
+        local xdresponse = request({
+            Url = "https://catalog.roblox.com/v1/catalog/items/" .. tostring(productidserialsniper) .. "/details?itemType=Asset",
+            Method = "GET"
+        })
+            local xdmessage = game:GetService("HttpService"):JSONDecode(xdresponse.Body)
+if xdmessage and xdmessage["totalQuantity"] then
+print(xdmessage["totalQuantity"])
+originalstockserial = xdmessage["totalQuantity"]
+end
+    end
+end)
+local tickserialsniper = 2
+b:Slider("Threads of checks", {
+    min = 1, -- min value of the slider
+    max = 8, -- max value of the slider
+    precise = false -- max 2 decimals
+}, function(value)
+    tickserialsniper = value
+end)
+b:Toggle("Serial Sniper (Have its Buy Prompt Opened)", function(bool2)
+    _G.SerialSniper = bool2
+    spawn(function()
+        while _G.SerialSniper and task.wait(intervalserialsnper) do
+            task.spawn(function()
+                for i = 1, tonumber(tickserialsniper) do
+                    task.spawn(function()
+                        if game:GetService("MarketplaceService"):GetProductInfo(productidserialsniper).Remaining ~= nil then
+                            print(originalstockserial -
+                                      game:GetService("MarketplaceService"):GetProductInfo(productidserialsniper).Remaining,
+                                "Sales")
+                            if (originalstockserial -
+                                game:GetService("MarketplaceService"):GetProductInfo(productidserialsniper).Remaining) ==
+                                (tonumber(serialyouwant) - 1) then
+                                if game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator:FindFirstChild("Prompt") and
+                                    game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt:FindFirstChild(
+                                        "AlertContents") and
+                                    game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents:FindFirstChild(
+                                        "Footer") and
+                                    game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents
+                                        .Footer:FindFirstChild("Buttons") and
+                                    game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents
+                                        .Footer.Buttons:FindFirstChild("2") and
+                                    game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents
+                                        .Footer.Buttons[2]:FindFirstChild("ButtonContent").ButtonMiddleContent and
+                                    game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents
+                                        .Footer.Buttons[2]:FindFirstChild("ButtonContent").ButtonMiddleContent:FindFirstChildOfClass(
+                                        "TextLabel") and tonumber(
+                                    game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator.Prompt.AlertContents
+                                        .Footer.Buttons[2]:FindFirstChild("ButtonContent").ButtonMiddleContent:FindFirstChildOfClass(
+                                        "TextLabel").Text) <= tonumber(MaxPrice) then
+
+                                            local yes = game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator
+                                                            .Prompt.AlertContents.Footer.Buttons[2].AbsolutePosition
+                                            game:GetService("VirtualInputManager"):SendMouseButtonEvent(yes.X +
+                                                                                                            tonumber(
+                                                    limoffsetX), yes.Y + tonumber(limoffsetY), 0, true, game, 1)
+                                            task.wait()
+                                            game:GetService("VirtualInputManager"):SendMouseButtonEvent(yes.X +
+                                                                                                            tonumber(
+                                                    limoffsetX), yes.Y + tonumber(limoffsetY), 0, false, game, 1)
+
+
+                                end
+                            end
+                        end
+                    end)
+                end
+            end)
+        end
+    end)
+end)
+task.wait(0.1)
+local w3 = library:CreateWindow("PlayerHub Limited")
+local b = w3:CreateFolder("._player") -- Creates the folder(U will put here your buttons,etc)
+local limid = 14472256544
+b:Box("Input Limited ID", "number", function(value) -- "number" or "string"
+    limid = value
+end)
+local b = w3:CreateFolder("Normal") -- Creates the folder(U will put here your buttons,etc)
+
+b:Button("Get Limited's Places (GUI)", function()
+    
+    pcall(function()
+        if request then
+            local response = request({
+                Url = "https://economy.roblox.com/v2/assets/" .. tostring(limid) .. "/details",
+                Method = "GET"
+            })
+
+            if response.StatusCode == 200 then
+                local Lib = loadstring(game:HttpGet(
+                    "https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/dirt", true))()
+                local Table = {}
+                local window = Lib:CreateWindow("PlayerHub Limited")
+                window:Section("Games")
+
+                window:Dropdown("What to do With It", {
+                    location = Table,
+                    flag = "Dropdown",
+                    search = true --[[AddsSearchBar]] ,
+                    list = {"Teleport", "Copy Script", "Copy Game Link"} --[[Wont work when PlayerList = true]] ,
+                    PlayerList = false --[[ Turns the list into the players in the server ]]
+                }, function()
+                    print(Table["Dropdown"])
+                end)
+                Table["Dropdown"] = "Teleport"
+                local message = game:GetService("HttpService"):JSONDecode(response.Body)
+
+                if type(message) == "table" and message["SaleLocation"] and type(message["SaleLocation"]) == "table" then
+                    local universeIds = message["SaleLocation"]["UniverseIds"]
+                    if type(universeIds) == "table" and #universeIds > 0 then
+                        for _, universeId in ipairs(universeIds) do
+                            print(universeId .. " universeid")
+
+                            local response2 = request({
+                                Url = "https://games.roblox.com/v1/games?universeIds=" .. tostring(universeId),
+                                Method = "GET"
+                            })
+
+                            if response2.StatusCode == 200 then
+                                local message2 = game:GetService("HttpService"):JSONDecode(response2.Body)
+
+                                if message2["data"] and message2["data"][1] and message2["data"][1]["rootPlaceId"] then
+
+                                    print(message2["data"][1]["rootPlaceId"] .. " placeid")
+
+                                    window:Button(tostring(message2["data"][1]["name"]) .. " (" ..
+                                                      tostring(message2["data"][1]["rootPlaceId"]) .. ")", function()
+                                        if Table["Dropdown"] == "Teleport" then
+                                            game:GetService("TeleportService"):Teleport(
+                                                message2["data"][1]["rootPlaceId"], LocalPlayer)
+                                        elseif Table["Dropdown"] == "Copy Script" then
+                                            setclipboard("-- This Script was Generated by Redblue's PlayerHub Ingame Game Sniper Script\ngame:GetService('TeleportService'):Teleport(" ..
+                                                             tostring(message2["data"][1]["rootPlaceId"]) ..
+                                                             ", LocalPlayer)")
+                                        elseif Table["Dropdown"] == "Copy Game Link" then
+                                            setclipboard("-- This Script was Generated by Redblue's PlayerHub Ingame Game Sniper Script\nhttps://www.roblox.com/games/" ..
+                                                             tostring(message2["data"][1]["rootPlaceId"]))
+                                        end
+                                    end)
+
+                                end
+                            else
+                                print("Failed! Something may have happened, like a Rate Limit")
+                            end
+                        end
+                    end
+                end
+            else
+                print("Failed! Something may have happened, like a Rate Limit")
+            end
+        end
+    end)
+
+end)
+b:Button("Print Limited Info", function()
+    print("Asset ID: " .. game:GetService("MarketplaceService"):GetProductInfo(limid).AssetId .. " \n" .. "Name: " ..
+              game:GetService("MarketplaceService"):GetProductInfo(limid).Name .. " \n" .. "Description: " ..
+              game:GetService("MarketplaceService"):GetProductInfo(limid).Description ..
+              " \n Use This to Buy It!  \n   game:GetService('MarketplaceService'):PromptPurchase(game.Players.LocalPlayer, " ..
+              limid .. ")")
+end)
+b:Button("Copy Limited Info", function()
+    setclipboard("-- This Script was Generated by Redblue's PlayerHub Ingame Game Sniper Script\nAsset ID: " .. game:GetService("MarketplaceService"):GetProductInfo(limid).AssetId .. " \n" ..
+                     "Name: " .. game:GetService("MarketplaceService"):GetProductInfo(limid).Name .. " \n" ..
+                     "Description: " .. game:GetService("MarketplaceService"):GetProductInfo(limid).Description ..
+                     " \n Use This to Buy It!  \n   game:GetService('MarketplaceService'):PromptPurchase(game.Players.LocalPlayer, " ..
+                     limid .. ")")
+end)
+local updspeed = 0
+b:Slider("Update Speed", {
+    min = 0, -- min value of the slider
+    max = 5, -- max value of the slider
+    precise = true -- max 2 decimals
+}, function(value)
+    updspeed = value
+end)
+b:Button("Buy Limited", function()
+    game:GetService("MarketplaceService"):PromptPurchase(game.Players.LocalPlayer, tostring(limid))
+end)
+
+local limsniper = false
+
+b:Toggle("Toggle Auto Limited Sniper V1 (AutoPrompts)", function(bool1)
+    limsniper = bool1
+    spawn(function()
+        while task.wait(updspeed) and limsniper and limid ~= nil do
+            game:GetService("MarketplaceService"):PromptPurchase(game.Players.LocalPlayer, tostring(limid))
+        end
+    end)
+end)
+wait(0.1)
+local limsniper1 = false
+b:Toggle("Toggle Auto Limited Sniper V2 (Prompt when Onsale)", function(bool)
+    limsniper1 = bool
+    spawn(function()
+        while task.wait(updspeed) and limsniper1 == true do
+            if limid ~= nil and game:GetService("MarketplaceService"):GetProductInfo(tonumber(limid)).IsForSale then
+                game:GetService("MarketplaceService"):PromptPurchase(game.Players.LocalPlayer, tostring(limid))
+            end
+        end
+    end)
+end)
+local limsniper2 = false
+b:Toggle("Toggle Auto Limited Sniper V3 (Prompt when Onsale)", function(bool)
+    limsniper2 = bool
+    spawn(function()
+        while task.wait(updspeed) and limsniper2 == true do
+            if limid ~= nil and game:GetService("MarketplaceService"):GetProductInfo(limid).Remaining ~= nil then
+                game:GetService("MarketplaceService"):PromptPurchase(game.Players.LocalPlayer, tostring(limid))
+            end
+        end
+    end)
+end)
+
+local gameid
+b:Box("Insert Game ID", "number", function(value) -- "number" or "string"
+    gameid = value
+end)
+b:Button("TP to game ID", function()
+    game:GetService("TeleportService"):Teleport(gameid, LocalPlayer)
+
+end)
+local b = w3:CreateFolder("OP") -- Creates the folder(U will put here your buttons,etc)
+
+
+b:Label("THIS IS RISKY COULD GET YOU BANNED (by Lemuru)", {
+    TextSize = 12, -- Self Explaining
+    TextColor = Color3.fromRGB(255, 255, 255), -- Self Explaining
+    BgColor = Color3.fromRGB(69, 69, 69) -- Self Explaining
+
+})
+b:Button("Get ingame UGC V1", function()
+    spawn(function()
+    for i, v in pairs(game:GetDescendants()) do
+        if v:IsA("RemoteEvent") then
+            v:FireServer(limid)
+        end
+        if v:IsA("BindableEvent") then
+            v:Fire(limid)
+        end
+        if v:IsA("RemoteFunction") then
+            v:InvokeServer(limid)
+
+        end
+    end
+end)
+end)
+
+b:Button("Get ingame UGC V2", function()
+    spawn(function()
+    for i, v in pairs(game:GetDescendants()) do
+        if v:IsA("RemoteEvent") then
+            spawn(function()
+                v:FireServer(limid)
+            end)
+            spawn(function()
+                v:FireServer(tostring(limid))
+            end)
+            spawn(function()
+                v:FireServer(game.Players.LocalPlayer.UserId, limid)
+            end)
+            spawn(function()
+                v:FireServer(game.Players.LocalPlayer.UserId, tostring(limid))
+            end)
+            spawn(function()
+                v:FireServer(limid, game.Players.LocalPlayer.UserId)
+            end)
+            task.wait(0.1)
+            spawn(function()
+                v:FireServer(tostring(limid), game.Players.LocalPlayer.UserId)
+            end)
+            spawn(function()
+                v:FireServer(tostring(game.Players.LocalPlayer.UserId), limid)
+            end)
+            spawn(function()
+                v:FireServer(tostring(game.Players.LocalPlayer.UserId), tostring(limid))
+            end)
+            spawn(function()
+                v:FireServer(limid, tostring(game.Players.LocalPlayer.UserId))
+            end)
+            spawn(function()
+                v:FireServer(tostring(limid), tostring(game.Players.LocalPlayer.UserId))
+            end)
+            spawn(function()
+                v:FireServer(game.Players.LocalPlayer, limid)
+            end)
+            task.wait(0.1)
+            spawn(function()
+                v:FireServer(game.Players.LocalPlayer, tostring(limid))
+            end)
+            spawn(function()
+                v:FireServer(limid, game.Players.LocalPlayer)
+            end)
+            spawn(function()
+                v:FireServer(tostring(limid), game.Players.LocalPlayer)
+            end)
+        end
+        if v:IsA("BindableEvent") then
+            spawn(function()
+                v:Fire(limid)
+            end)
+            spawn(function()
+                v:Fire(tostring(limid))
+            end)
+            spawn(function()
+                v:Fire(tostring(game.Players.LocalPlayer.UserId), limid)
+            end)
+            spawn(function()
+                v:Fire(tostring(game.Players.LocalPlayer.UserId), tostring(limid))
+            end)
+            spawn(function()
+                v:Fire(limid, tostring(game.Players.LocalPlayer.UserId))
+            end)
+            task.wait(0.1)
+            spawn(function()
+                v:Fire(tostring(limid), tostring(game.Players.LocalPlayer.UserId))
+            end)
+            spawn(function()
+                v:Fire(game.Players.LocalPlayer, limid)
+            end)
+            spawn(function()
+                v:Fire(game.Players.LocalPlayer, tostring(limid))
+            end)
+            task.wait(0.1)
+            spawn(function()
+                v:Fire(limid, game.Players.LocalPlayer)
+            end)
+            spawn(function()
+                v:Fire(tostring(limid), game.Players.LocalPlayer)
+            end)
+        end
+        if v:IsA("RemoteFunction") then
+            spawn(function()
+                v:InvokeServer(limid)
+            end)
+            spawn(function()
+                v:InvokeServer(tostring(limid))
+            end)
+            spawn(function()
+                v:InvokeServer(game.Players.LocalPlayer, limid)
+            end)
+            task.wait(0.1)
+            spawn(function()
+                v:InvokeServer(game.Players.LocalPlayer, tostring(limid))
+            end)
+            spawn(function()
+                v:InvokeServer(limid, game.Players.LocalPlayer)
+            end)
+            spawn(function()
+                v:InvokeServer(tostring(limid), game.Players.LocalPlayer)
+            end)
+            spawn(function()
+                v:InvokeServer(game.Players.LocalPlayer.UserId, limid)
+            end)
+            task.wait(0.1)
+            spawn(function()
+                v:InvokeServer(game.Players.LocalPlayer.UserId, tostring(limid))
+            end)
+            spawn(function()
+                v:InvokeServer(limid, game.Players.LocalPlayer.UserId)
+            end)
+            spawn(function()
+                v:InvokeServer(tostring(limid), game.Players.LocalPlayer.UserId)
+            end)
+            spawn(function()
+                v:InvokeServer(tostring(game.Players.LocalPlayer.UserId), limid)
+            end)
+            spawn(function()
+                v:InvokeServer(tostring(game.Players.LocalPlayer.UserId), tostring(limid))
+            end)
+            task.wait(0.1)
+            spawn(function()
+                v:InvokeServer(limid, tostring(game.Players.LocalPlayer.UserId))
+            end)
+            spawn(function()
+                v:InvokeServer(tostring(limid), tostring(game.Players.LocalPlayer.UserId))
+            end)
+        end
+    end
+end)
+end)
+local w3 = library:CreateWindow("PlayerHub Games")
+local abc = w3:CreateFolder("Subplaces") -- Creates the folder(U will put here your buttons,etc)
+local pages = game:GetService("AssetService"):GetGamePlacesAsync()
+local chosenversionsubplace = "Teleport"
+abc:Dropdown("What to do with Subplace", {"Teleport", "Copy Script", "Copy Game Link"}, true, function(subplacethingy)
+    chosenversionsubplace = subplacethingy
+end)
+
+while true and task.wait(0.5) do
+    for _, place in pairs(pages:GetCurrentPage()) do
+        abc:Button(tostring(place.Name) .. " (" .. tostring(place.PlaceId) .. ")", function()
+            spawn(function()
+            if chosenversionsubplace == "Teleport" then
+                game:GetService("TeleportService"):Teleport(place.PlaceId, LocalPlayer)
+            elseif chosenversionsubplace == "Copy Script" then
+                setclipboard("-- This Script was Generated by Redblue's PlayerHub Ingame Game Sniper Script\ngame:GetService('TeleportService'):Teleport(" .. tostring(place.PlaceId) ..
+                                 ", LocalPlayer)")
+            elseif chosenversionsubplace == "Copy Game Link" then
+                setclipboard("-- This Script was Generated by Redblue's PlayerHub Ingame Game Sniper Script\nhttps://www.roblox.com/games/" .. tostring(place.PlaceId))
+            end
+        end)
+        end)
+        task.wait(0.01)
+
+    end
+    if pages.IsFinished then
+        break
+    end
+    pages:AdvanceToNextPageAsync()
+end
