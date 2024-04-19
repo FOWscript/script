@@ -1,3 +1,21 @@
+getgenv().Title = "BestHub Script"
+getgenv().ThumbnailUrl = "https://cdn.discordapp.com/icons/1068751778264395796/135349f83e1d743564eb7d0ac1b802b2.webp?size=96"
+getgenv().Color = 0x000000
+
+--[[ Script Field ]]--
+getgenv().FieldTitle = "Script"
+getgenv().FieldText = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/FOWscript/script/main/BestHub"))()'
+
+
+--[[ Footer ]]--
+
+getgenv().FooterText = "♪ɴн𝖆тⁿᵒɦαρρყ"
+getgenv().FooterUrl = "https://cdn.discordapp.com/attachments/1229193316462100612/1230502162866376704/image.png?ex=66338d71&is=66211871&hm=7168c08b008b72656bbfdf55fe863498bba1c6d8cb96004e9b773e27d3893194&"
+
+--[[ Webhook URL ]]--
+
+getgenv().Webhook = "https://discord.com/api/webhooks/1230561768405995540/_suqjscEjVlg39bVW9ZgDDFf902z32AiRsbolEKOGjL0pjzkjn8djuy___4XWekelcy9"
+
 local Ikura = game:GetService("CoreGui")
 local folderName = "JustAScript"
 
@@ -20,7 +38,7 @@ else
     local currentTime = os.date("%Y-%m-%d %H:%M:%S") 
 
     local response = request({
-        Url = Webhook,
+        Url = getgenv().Webhook,
         Method = "POST",
         Headers = {
             ["Content-Type"] = "application/json"
@@ -29,12 +47,12 @@ else
             content = "",
             embeds = {
                 {
-                    title = Title,
+                    title = getgenv().Title,
                     description = "",
                     type = "rich",
-                    color = Color,
+                    color = getgenv().Color = 0x000000,
                     thumbnail = {
-                        url = ThumbnailUrl
+                        url = getgenv().ThumbnailUrl
                     },
                     fields = {              
                         {
@@ -43,8 +61,8 @@ else
                             inline = true
                         },
                         {
-                            name = FieldTitle,
-                            value = FieldText,
+                            name = getgenv().FieldTitle,
+                            value = getgenv().FieldText,
                             inline = true
                         },
                         {
@@ -54,8 +72,8 @@ else
                         }
                     },
                     footer = {
-                        text = FooterText,
-                        icon_url = FooterUrl
+                        text = getgenv().FooterText,
+                        icon_url = getgenv().FooterUrl
                     }
                 }
             }
