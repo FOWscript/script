@@ -1,7 +1,4 @@
-function webhooks_send()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/FOWscript/script/main/Log%20excuted"))()
-webhooks_send()
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FOWscript/script/main/Log%20excuted"))()
 local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
 local window = Library:NewWindow("Best Hub Forever")
 
